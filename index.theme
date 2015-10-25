@@ -1,13 +1,13 @@
 [Desktop Entry]
 Type=X-GNOME-Metatheme
-Name=Ambiance
-Comment=Ubuntu Ambiance theme
+Name=Spill
+Comment=Bluish theme based on Ubuntu's Ambiance
 Encoding=UTF-8
 
 [X-GNOME-Metatheme]
-GtkTheme=Ambiance
-MetacityTheme=Ambiance
+GtkTheme=Spill
+MetacityTheme=Spill
 IconTheme=ubuntu-mono-dark
-CursorTheme=DMZ-White
+CursorTheme=DMZ-Black
 ButtonLayout=close,minimize,maximize:
 X-Ubuntu-UseOverlayScrollbars=true
