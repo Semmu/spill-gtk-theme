@@ -1,11 +1,10 @@
 gtk-color-scheme = "base_color:#ffffff\nfg_color:#4c4c4c\ntooltip_fg_color:#ffffff\nselected_bg_color:#46A4F0\nselected_fg_color:#FFFFFF\ntext_color:#3C3C3C\nbg_color:#F5F6F7\ntooltip_bg_color:#000000\nlink_color:#46A4F0\nbg_color_dark:#3c3b37\nfg_color_dark:#dfdbd2\nselected_fg_color_dark:#ffffff"
-
 gtk-icon-sizes = "panel-menu=22,22:gtk-button=16,16"
 
 gtk-auto-mnemonics = 1
 gtk-alternative-sort-arrows = 1
 
-style "default"{
+style "default" {
 	xthickness = 1
 	ythickness = 1
 
@@ -30,10 +29,12 @@ style "default"{
 	GtkScale::slider-length = 10
 	GtkScale::trough-side-details = 1
 
-	GtkScrollbar::activate-slider = 1
-	GtkScrollbar::trough-border = 0
-	GtkScrollbar::slider-width = 16
-	GtkScrollbar::min-slider-length = 10
+	GtkScrollbar::activate-slider = 0
+	GtkScrollbar::trough-border = 3
+	GtkScrollbar::slider-width = 6
+	GtkScrollbar::min-slider-length = 30
+	GtkScrollbar::has-backward-stepper = 0
+	GtkScrollbar::has-forward-stepper = 0
 
 	GtkMenuBar::internal-padding = 0
 	GtkMenuBar::shadow-type = GTK_SHADOW_NONE
@@ -59,7 +60,7 @@ style "default"{
 
 	GtkProgressBar::min-horizontal-bar-height = 14
 	GtkProgressBar::min-vertical-bar-width = 14
-	
+
 	GtkImage::x-ayatana-indicator-dynamic = 1
 	GtkMenuBar::window-dragging = 1
 
@@ -126,13 +127,13 @@ style "dark"
 	fg[ACTIVE]	  = @fg_color_dark
 	fg[SELECTED]	  = @selected_fg_color_dark
 	fg[INSENSITIVE]	  = shade (0.5, @fg_color_dark)
-  
+
 	bg[NORMAL]        = @bg_color_dark
 	bg[ACTIVE]	  = shade (0.8, @bg_color_dark)
 	bg[SELECTED]      = @selected_bg_color
 	bg[PRELIGHT]      = shade (1.0, "#4D4C48")
 	bg[INSENSITIVE]   = shade (0.85, @bg_color_dark)
-  	
+
 	text[NORMAL]      = @fg_color_dark
 	text[PRELIGHT]	  = shade (1.15, @fg_color_dark)
 	text[SELECTED]	  = @selected_fg_color_dark
@@ -220,13 +221,15 @@ style "spinbutton" = "notebook_button" {
 }
 
 style "scrollbar" = "button" {
-	xthickness = 2
-	ythickness = 2
+	xthickness = 3
+	ythickness = 3
 
-	bg[NORMAL] = @bg_color
+	bg[NORMAL] = shade(1.5, @bg_color_dark)
 	bg[PRELIGHT] = shade (1.04, @bg_color)
-	
-	bg[ACTIVE] = shade (0.96, @bg_color)
+	bg[ACTIVE] = shade (0.96, @bg_color_dark)
+
+	bg[INSENSITIVE] = @bg_color
+	fg[INSENSITIVE] = "#9c9c9c"
 
 	engine "murrine"
 	{
@@ -277,7 +280,7 @@ style "scale" = "button" {
 style "notebook_bg" {
 	bg[NORMAL] = shade (1.02, @bg_color)
 	bg[ACTIVE] = shade (0.97, @bg_color)
-	fg[ACTIVE] = mix (0.8, @fg_color, shade (0.97, @bg_color))
+	fg[ACTIVE] = mix(0.8, @fg_color, shade (0.97, @bg_color))
 }
 
 # The color is changed by the notebook_bg style, this style
@@ -285,7 +288,7 @@ style "notebook_bg" {
 style "notebook" {
 	xthickness = 2
 	ythickness = 2
-	
+
 	engine "murrine" {
 		roundness = 3
 		contrast = 0.8
@@ -304,7 +307,7 @@ style "statusbar" {
 style "comboboxentry" = "notebook_button" {
 	xthickness = 3
 	ythickness = 3
-	
+
 	engine "murrine" {
 		textstyle = 1
 		glowstyle = 5
@@ -313,7 +316,6 @@ style "comboboxentry" = "notebook_button" {
 }
 
 style "menubar" = "dark" {
-	bg[NORMAL]        = @bg_color
 	engine "murrine" {
 		textstyle = 2
 		text_shade = 0.33
@@ -401,7 +403,7 @@ style "separator_menu_item" {
 	GtkWidget::wide-separators = 1
 	GtkWidget::separator-width = 1
 	GtkWidget::separator-height = 7
-	
+
 	engine "murrine" {
 		contrast = 0.6
 		separatorstyle = 0
